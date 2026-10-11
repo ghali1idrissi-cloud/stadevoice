@@ -3,6 +3,8 @@ import { Droplets, Coffee, Navigation, Stethoscope, List, Map } from 'lucide-rea
 import { useLanguage } from '../i18n/LanguageContext';
 import StadiumMap from '../components/StadiumMap';
 
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
 /**
  * Vue des services et points d'intérêt (POIs) du stade
  * Affichage en temps réel des temps d'attente et du niveau d'affluence
@@ -26,7 +28,7 @@ const ServicesView = () => {
   useEffect(() => {
     const fetchPois = async () => {
       try {
-        const res = await fetch('/api/pois');
+        const res = await fetch(`${API_BASE}/api/pois`);
         const data = await res.json();
         setPois(data);
       } catch (err) {

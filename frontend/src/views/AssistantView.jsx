@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Bot, Send, Mic, Volume2, VolumeX, MicOff } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
 /**
  * Vue de discussion avec l'assistant intelligent StadeVoice
  * Inclut la reconnaissance vocale (Speech-to-Text) et la synthèse vocale (Text-to-Speech)
@@ -149,7 +151,7 @@ const AssistantView = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/chat', {
+      const response = await fetch(`${API_BASE}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMessage.content, language }),
@@ -158,7 +160,7 @@ const AssistantView = () => {
       
       setMessages((prev) => [
         ...prev,
-        { id: Date.now(), role: 'assistant', content: data.answer },
+        { id: Date.now(), role: 'assistant', content: data.answer || data.response },
       ]);
     } catch (error) {
       setMessages((prev) => [

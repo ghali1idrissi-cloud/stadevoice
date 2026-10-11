@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Plus, X, Camera, Image, Trash2 } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
 /**
  * Vue Objets Perdus & Trouvés avec formulaire de signalement et filtrage
  */
@@ -34,7 +36,7 @@ const LostFoundView = () => {
   const fetchItems = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/items');
+      const res = await fetch(`${API_BASE}/api/items`);
       const data = await res.json();
       setItems(data);
     } catch (err) {
@@ -62,7 +64,7 @@ const LostFoundView = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch('/api/items', {
+      await fetch(`${API_BASE}/api/items`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

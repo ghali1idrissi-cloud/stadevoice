@@ -4,6 +4,8 @@ import { useLanguage } from '../i18n/LanguageContext';
 import MatchWidget from '../components/MatchWidget';
 import NotificationBanner from '../components/NotificationBanner';
 
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
 /**
  * Vue d'accueil principale de l'application StadeVoice
  * Comprend le sélecteur de langue, le widget de match, la météo dynamique et les statistiques en direct
@@ -15,7 +17,7 @@ const HomeView = ({ onNavigate }) => {
 
   useEffect(() => {
     // Récupérer la météo en direct
-    fetch('/api/weather')
+    fetch(`${API_BASE}/api/weather`)
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
         if (data) setWeather(data);
@@ -23,7 +25,7 @@ const HomeView = ({ onNavigate }) => {
       .catch((err) => console.error('Erreur météo', err));
 
     // Récupérer les statistiques du stade
-    fetch('/api/stats')
+    fetch(`${API_BASE}/api/stats`)
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
         if (data) setStats(data);
