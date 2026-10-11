@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum LostItemStatus {
+  LOST
+  FOUND
+}
+
+model LostItem {
+  id          Int            @id @default(autoincrement())
+  title       String
+  description String
+  status      LostItemStatus
+  location    String
+  contactInfo String
+  createdAt   DateTime       @default(now())
+}
+
+enum PoiCategory {
+  TOILET
+  WATER
+  FIRST_AID
+  EXIT
+}
+
+enum PoiStatus {
+  FLUID
+  BUSY
+  FULL
+}
+
+model PointOfInterest {
+  id             Int         @id @default(autoincrement())
+  name           String
+  category       PoiCategory
+  status         PoiStatus
+  waitTimeMinutes Int
+}
+
+model FaqKnowledge {
+  id       Int    @id @default(autoincrement())
+  question String
+  answer   String
+  tags     String
+}
