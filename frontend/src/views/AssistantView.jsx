@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Bot, Send, Mic, Volume2, VolumeX, MicOff } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 
-const API_BASE = import.meta.env.VITE_API_URL || '';
+const API_BASE = 'https://stadevoice-api.onrender.com';
 
 /**
  * Vue de discussion avec l'assistant intelligent StadeVoice

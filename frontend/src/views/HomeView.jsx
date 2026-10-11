@@ -4,7 +4,7 @@ import { useLanguage } from '../i18n/LanguageContext';
 import MatchWidget from '../components/MatchWidget';
 import NotificationBanner from '../components/NotificationBanner';
 
-const API_BASE = import.meta.env.VITE_API_URL || '';
+const API_BASE = 'https://stadevoice-api.onrender.com';
 
 /**
  * Vue d'accueil principale de l'application StadeVoice

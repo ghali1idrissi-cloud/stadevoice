@@ -3,7 +3,7 @@ import { Droplets, Coffee, Navigation, Stethoscope, List, Map } from 'lucide-rea
 import { useLanguage } from '../i18n/LanguageContext';
 import StadiumMap from '../components/StadiumMap';
 
-const API_BASE = import.meta.env.VITE_API_URL || '';
+const API_BASE = 'https://stadevoice-api.onrender.com';
 
 /**
  * Vue des services et points d'intérêt (POIs) du stade

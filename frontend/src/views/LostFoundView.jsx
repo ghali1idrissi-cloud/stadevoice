@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Plus, X, Camera, Image, Trash2 } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 
-const API_BASE = import.meta.env.VITE_API_URL || '';
+const API_BASE = 'https://stadevoice-api.onrender.com';
 
 /**
  * Vue Objets Perdus & Trouvés avec formulaire de signalement et filtrage
